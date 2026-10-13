@@ -181,6 +181,8 @@ npm test
 npm run typecheck
 ```
 
+`scripts/stdio.sh` runs the server locally and serves MCP over stdio, for clients that start a server as a command (Glama uses it). It needs `SITE_DOMAIN`, `HASH_SECRET` and `MCP_READ_KEY` in the environment.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
