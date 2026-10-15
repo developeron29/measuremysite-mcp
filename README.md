@@ -10,7 +10,35 @@ This repo used to be called `agentlytics-mcp`. The worker, database, tracker (`a
 
 <sub>Example questions and answers; the numbers are illustrative.</sub>
 
-> Don't want to run it yourself? **[measuremy.site](https://measuremy.site/?utm_source=github&utm_medium=referral&utm_campaign=measuremysite-mcp)** is the hosted version: same MCP tools, plus a dashboard, AI explanations of traffic spikes, tracking of posts that mention you (Hacker News, Bluesky, YouTube...), alerts and weekly summaries. 30-day free trial, no card; plans from $9 a month.
+## Hosted MCP server: `https://a.measuremy.site/mcp`
+
+Don't want to run it yourself? **[measuremy.site](https://measuremy.site/?utm_source=github&utm_medium=referral&utm_campaign=measuremysite-mcp)** is the hosted version (`site.measuremy/analytics` in the MCP registry): the same MCP tools, plus a dashboard, AI explanations of traffic spikes, tracking of posts that mention you (Hacker News, Bluesky, YouTube...), alerts and weekly summaries. Streamable HTTP with OAuth: you sign in through the browser the first time, and no API key is pasted anywhere. 30-day free trial, no card; plans from $9 a month.
+
+**VS Code (Copilot)**: in `.vscode/mcp.json`, or **MCP: Add Server** → HTTP. VS Code asks you to sign in when the server starts.
+
+```json
+{
+  "servers": {
+    "measuremysite": { "type": "http", "url": "https://a.measuremy.site/mcp" }
+  }
+}
+```
+
+**Claude Code**
+
+```sh
+claude mcp add --scope user --transport http measuremysite https://a.measuremy.site/mcp
+```
+
+**Cursor** (`~/.cursor/mcp.json`)
+
+```json
+{ "mcpServers": { "measuremysite": { "url": "https://a.measuremy.site/mcp" } } }
+```
+
+On sign-in you create an account (or log in) and enter your site's domain. Then ask your agent to "add measuremy.site analytics to this project": the server hands it the script tag for your site. Docs: [measuremy.site/docs/mcp](https://measuremy.site/docs/mcp).
+
+The rest of this README covers the self-hosted version.
 
 ## What your agent can do
 
